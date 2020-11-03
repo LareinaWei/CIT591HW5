@@ -12,7 +12,6 @@ public class WordRecommender {
         this.allWords = this.buildAllWords();
     }
 
-
     public HashSet<String> buildAllWords(){
         HashSet<String> allWords = new HashSet<>();
         try {
@@ -21,8 +20,6 @@ public class WordRecommender {
             String st;
             while ((st = br.readLine()) != null){
                 allWords.add(st);
-               // System.out.println(st);
-
             }
 
         } catch (FileNotFoundException e) {
@@ -106,12 +103,8 @@ public class WordRecommender {
             list.add( priorityQMin.poll().thisWord);
 
         ArrayList<String> list2 = new ArrayList<>();
-
-
         for( int i = list.size()-1; i >=0; i--) {
-            //System.out.println(list.get(i));
             list2.add(list.get(i));
-
         }
         return list2;
 
@@ -189,8 +182,6 @@ public class WordRecommender {
             this.thisWord = thisWord;
             this.similarity = similarity;
         }
-
-
     }
 }
 
