@@ -26,10 +26,8 @@ public class WordRecommender {
                 allWords.add(st);
             }
 
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
         } catch (IOException e) {
+            System.out.println("An error occurred.");
             e.printStackTrace();
         }
         return  allWords;
@@ -218,9 +216,8 @@ public class WordRecommender {
         public int compare(WordSimilarity s1, WordSimilarity s2) {
             if (s1.similarity > s2.similarity)
                 return 1;
-            else if (s1.similarity < s2.similarity)
+            else
                 return -1;
-            return 0;
         }
     }
     /** used for compare different word based on the similarity value
