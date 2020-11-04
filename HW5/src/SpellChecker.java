@@ -17,18 +17,21 @@ public class SpellChecker {
         this.commonPercent = commonPercent;
         this.topN = topN;
     }
+    /** run the project
+     */
     public void run() {
-	// write your code here
         WordRecommender wordRecommender = new WordRecommender(this.fileDict);
         HashSet<String> wordDict = wordRecommender.getDict();
-
-
 
         ArrayList<String> wordBeforeCheck = ReadWriteFile.getAllWords(this.fileBeforeCheck);
 
         int size = wordBeforeCheck.size();
         for(int i = 0; i< size; i++){
             String wordNow =  wordBeforeCheck.get(i);
+
+            /**
+             * if the word is correct, continue
+             */
             if( wordDict.contains( wordNow))
                 continue;
 
@@ -42,6 +45,9 @@ public class SpellChecker {
             String[] choices = {"r","a","t"};
             String response1 = getResponse(choices);
 
+            /**
+             * the case when the user choose r
+             */
             if(response1.equals("r")){
                 System.out.println("Your word will now be replaced with one of the suggestions Enter the number corresponding to the word that you want to use for replacement.");
                 choices = new String[wordChoices.size()];
@@ -52,6 +58,9 @@ public class SpellChecker {
                 wordBeforeCheck.set(i,wordChoices.get(change-1));
             }
 
+            /**
+             * the case when the user choose t
+             */
             if(response1.equals("t")){
                 System.out.println("Please type the word that will be used as the replacement in the output file.");
                 Scanner scan = new Scanner(System.in);
@@ -62,6 +71,11 @@ public class SpellChecker {
         System.out.println("All words checked");
         ReadWriteFile.writeFile(wordBeforeCheck,this.fileBeforeCheck);
     }
+
+    /** get the valid response from the user
+     * @param choices the choices users can choose from
+     * @return the valid response from the user
+     **/
     static String getResponse(String[] choices){
         Scanner scan = new Scanner(System.in);
         while(true) {

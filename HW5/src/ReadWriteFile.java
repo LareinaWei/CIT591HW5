@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.util.*;
 
 public class ReadWriteFile {
+    /** a static function to read the file to be checked
+     * @param fileName the file to be checked
+     * @return an ArrayList of all words to be checked
+     */
     public static ArrayList<String> getAllWords(String fileName){
         ArrayList<String> allWords = new ArrayList<>();
         try {
@@ -25,7 +29,11 @@ public class ReadWriteFile {
 
 
     }
-
+    /** write these checked words to a file
+     * @param outArray all checked words
+     * @param fileName the file name should write to
+     * @return
+     */
     public static void writeFile(ArrayList<String> outArray, String fileName){
         String fileNameWrite = fileName.substring(0, fileName.length() - 4) + "_chk.txt";
         try {
